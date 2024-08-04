@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Layout_V</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../CSS/normalize.css">
+  <style>
+    body {
+      font-family: Roboto, sans-serif;
+    }
+
+    :root {
+      --theme-color: #02cab9;
+      --highlight-color: #ff5f5f;
+    }
+
+    /* .banner {
+      width: 100%;
+      height: 600px;
+      background-image: url('https://picsum.photos/1400/500/?random=10');
+      可替換網址
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    } */
+    /* .banner .main-title {
+    }
+    .banner h1 {
+      font-size: 50px;
+      margin: 24px 0;
+    }
+    .banner h2 {
+      font-size: 24px;
+      margin: 24px 0;
+
+    } */
+
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      /* 可以根據需要調整高度 */
+      overflow: hidden;
+      /* 確保圖片超出部分不顯示 */
+    }
+
+    .banner-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* 確保圖片覆蓋整個橫幅 */
+    }
+
+    .titles {
+      position: absolute;
+      top: 30%;
+      /* 可以根據需要調整位置 */
+      left: 100px;
+      /* 距離左側約 100px */
+      color: #484848;
+      /* 字體顏色 */
+      text-align: left;
+      /* 文字靠左對齊 */
+    }
+
+    .main-title,
+    .sub-title {
+      margin: 0;
+    }
+
+    .main-title {
+      margin-bottom: 24px;
+    }
+
+    .main-title h1 {
+      font-size: 50px;
+    }
+
+    .sub-title h1 {
+      font-size: 50px;
+    }
+
+    .four-reason {
+      padding: 48px 24px;
+    }
+
+    .four-reason-title,
+    .suitable-for-title,
+    .how-to-use-title,
+    .teacher-selection-progress-title {
+      font-size: 30px;
+      text-align: center;
+      /* 置中 */
+      margin-bottom: 20px;
+      /* 與下方內容保持距離 */
+      color: #484848;
+    }
+
+    .four-reason-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto auto;
+      margin: 30px auto;
+      width: 50%;
+      /* 兩行 */
+      row-gap: 5px;
+      /* 設定兩行之間的間距 */
+      column-gap: 0px;
+      /* 設定左右間距 */
+    }
+
+    .four-reason-item {
+      width: auto;
+      display: flex;
+      padding: 20px;
+      align-items: center;
+      /* 垂直居中 */
+      text-align: left;
+
+      /* border: 1px solid #ccc; 可選：增加邊框方便查看間距 */
+
+    }
+
+    .four-reason-icon {
+      margin-right: 10px;
+    }
+
+    .four-reason-icon img {
+      display: block;
+      width: 30px;
+      height: 30px;
+    }
+
+    .four-reason-divider {
+      border-left: 2px solid var(--highlight-color);
+      height: 85px;
+      margin: 0 20px;
+    }
+
+    .four-reason-content {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .four-reason-content h3,
+    .four-reason-content p {
+      margin: 1px;
+      /* 重置 margin */
+    }
+
+    .four-reason-content h3 {
+      font-size: 24px;
+      color: #363636;
+    }
+
+    .four-reason-content p {
+      font-size: 20px;
+      color: #212121;
+    }
+
+    .suitable-for-container {
+      display: flex;
+      justify-content: space-evenly;
+      margin: 0px 50px;
+      /* gap: 50px; */
+      /* padding: 20px; */
+      /* 圖片之間的間隔 */
+    }
+
+    .suitable-for-item {
+      position: relative;
+      width: 30%;
+      /* 設置每個圖片容器的寬度 */
+      gap: auto;
+    }
+
+    .suitable-for-img {
+      position: relative;
+    }
+
+    .suitable-for-img img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .suitable-for-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      color: #484848;
+      /* 文字顏色 */
+      padding: 10px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .how-to-use {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .how-to-use-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .how-to-use-item {
+      display: flex;
+      align-items: center;
+      /* border: 1px solid #ddd; */
+      padding: 20px;
+      /* border-radius: 8px; */
+      width: 80%;
+      /* 可根據需要調整寬度 */
+      max-width: 840px;
+      /* 可根據需要調整最大寬度 */
+    }
+
+    .how-to-use-img img {
+      max-width: 400px;
+      margin-right: 20px;
+    }
+
+    .how-to-use-step {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #ffefef;
+      color: var(--highlight-color);
+      font-size: 30px;
+      margin-right: 20px;
+    }
+
+    .how-to-use-content {
+      text-align: left;
+    }
+
+    .how-to-use-content h3 {
+      /* margin-bottom: 10px; */
+      font-size: 24px;
+      color: #363636;
+    }
+
+    .how-to-use-content {
+      font-size: 20px;
+    }
+
+    .teacher-selection-progress {
+      background-color: #fbfbfb;
+      padding: 80px 0;
+
+    }
+
+    .teacher-selection-progress-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .teacher-selection-progress-item {
+      /* align-items: center;
+      border: 1px solid #ddd;
+      padding: 20px; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #ddd;
+      padding: 20px;
+      width: 320px;
+      height: 320px;
+      background-color: #fff;
+      /* 可根據需要調整 */
+    }
+
+    .teacher-selection-progress-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .teacher-selection-progress img {
+      margin-top: 30px;
+      max-width: 80px;
+    }
+
+    .teacher-selection-progress-divider {
+      width: 60%;
+      border-top: 1px solid var(--highlight-color);
+      margin: 20px 0;
+    }
+
+    .teacher-selection-progress-content {
+      text-align: center;
+    }
+
+    .arrow-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 130px;
+      width: 12px;
+      height: 40px;
+    }
+
+    .arrow-icon svg {
+      width: 100%;
+      /* 根據需要調整 */
+      height: auto;
+      fill: #484848;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <div class="main-navbar">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="../Layout-Img/ghost.webp" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">搜尋教師</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">推薦教師</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">評價</a>
+              </li>
+              <!-- <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          </li> -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="banner">
+    <div class="banner-image">
+      <img src="https://picsum.photos/1400/500/?random=10">
+    </div>
+    <div class="titles">
+      <div class="main-title">
+        <h1>像好友一樣的優質教師</h1>
+      </div>
+      <div class="sub-title">
+        <h2>從 AmazingTalker 認識世界各地的人與文化</h2>
+      </div>
+    </div>
+  </div>
+  <!-- 
+  <div class="section-wrapper">
+    <div class="item-group d-flex m-3">
+      <div class="tab">語言學習</div>
+      <div class="tab">升學補習</div>
+      <div class="tab">專業科目</div>
+      <div class="tab">音樂課程</div>
+      <div class="tab">運動課程</div>
+      <div class="tab">生活品味</div>
+    </div>
+  </div> -->
+
+
+  <div class="four-reason">
+    <div class="four-reason-title">
+      <h2>4 個愛上 AmazingTalker 的理由</h2>
+    </div>
+    <div class="four-reason-container">
+      <div class="four-reason-item">
+        <div class="four-reason-icon">
+          <img src="../Layout-Img/calendar-days-solid.svg" alt="">
+        </div>
+        <div class="four-reason-divider"></div>
+        <div class="four-reason-content">
+          <h3>任選上課時間</h3>
+          <p>自己在課表選擇上課時間<br>方便學習沒有壓力</p>
+        </div>
+      </div>
+      <div class="four-reason-item">
+        <div class="four-reason-icon">
+          <img src="../Layout-Img/wand-magic-sparkles-solid.svg">
+        </div>
+        <div class="four-reason-divider"></div>
+        <div class="four-reason-content">
+          <h3>專屬你的課程</h3>
+          <p>依照能力、需求、喜好<br>為你打造客製化有效進步的課程</p>
+        </div>
+      </div>
+      <div class="four-reason-item">
+        <div class="four-reason-icon">
+          <img src="../Layout-Img/wand-magic-sparkles-solid.svg">
+        </div>
+        <div class="four-reason-divider"></div>
+        <div class="four-reason-content">
+          <h3>1 堂也能買</h3>
+          <p>沒有業務綁約 根據個人需求<br>1、5、100 堂都能購買</p>
+        </div>
+      </div>
+      <div class="four-reason-item">
+        <div class="four-reason-icon">
+          <img src="../Layout-Img/chalkboard-user-solid.svg">
+        </div>
+        <div class="four-reason-divider"></div>
+        <div class="four-reason-content">
+          <h3>自選上課老師</h3>
+          <p>✔ 影片✔ 履歷✔ 學生評價<br>3大方向自選老師 進步看得見</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="suitable-for">
+    <div class="suitable-for-title">
+      <h2>AmazingTalker 也適合我嗎？</h2>
+    </div>
+    <div class="suitable-for-container">
+      <div class="suitable-for-item col-12 col-md-4">
+        <div class="suitable-for-img">
+          <img src="../Layout-Img/examinee.webp" alt="考生">
+        </div>
+        <div class="suitable-for-content">
+          <h3>考生</h3>
+          <p>針對弱點特別備課<br>
+            檢定考試、出國留學輕鬆過關</p>
+        </div>
+      </div>
+      <div class="suitable-for-item col-12 col-md-4">
+        <div class="suitable-for-img">
+          <img src="../Layout-Img/worker.webp">
+        </div>
+        <div class="suitable-for-content" alt="工作人士">
+          <h3>工作人士</h3>
+          <p>成功提升語言競爭力<br>
+            加薪、轉職、興趣學習 自在達成目標</p>
+        </div>
+      </div>
+      <div class="suitable-for-item col-12 col-md-4">
+        <div class="suitable-for-img">
+          <img src="../Layout-Img/children.webp" alt="孩童">
+        </div>
+        <div class="suitable-for-content">
+          <h3>孩童</h3>
+          <p>客製幼童 1 對 1 母語環境<br>
+            快樂學習養成從小雙語競爭力</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="how-to-use">
+    <div class="how-to-use-title">
+      <h2>如何使用</h2>
+    </div>
+    <div class="how-to-use-container">
+      <div class="how-to-use-item">
+        <div class="how-to-use-img">
+          <img src="../Layout-Img/select-tutor.webp" alt="">
+        </div>
+        <div class="how-to-use-step">1</div>
+        <div class="how-to-use-content">
+          <h3>自選家教、溝通需求</h3>
+          <p>依影片、履歷 、學生評價 選擇老師<br>
+            並在課前私訊老師 溝通上課內容</p>
+        </div>
+      </div>
+      <div class="how-to-use-item">
+        <div class="how-to-use-img">
+          <img src="../Layout-Img/select-time.webp" alt="">
+        </div>
+        <div class="how-to-use-step">2</div>
+        <div class="how-to-use-content">
+          <h3>選擇時間、預約上課</h3>
+          <p>購買課程後 彈性選擇上課時間<br>
+            若臨時有事也可以在12小時前取消課程
+          </p>
+        </div>
+      </div>
+      <div class="how-to-use-item">
+        <div class="how-to-use-img">
+          <img src="../Layout-Img/select-place.webp" alt="">
+        </div>
+        <div class="how-to-use-step">3</div>
+        <div class="how-to-use-content">
+          <h3>彈性地點、開啟課程</h3>
+          <p>不管在哪，手機、電腦、平板皆可以自在上課<br>
+            時間到使用 Zoom 線上教室開啟課程</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="teacher-selection-progress">
+    <div class="teacher-selection-progress-title">
+      <h2>3%的教師合格率</h2>
+      <h3>教師嚴選流程</h3>
+    </div>
+    <div class="teacher-selection-progress-container">
+      <div class="teacher-selection-progress-item">
+        <div class="teacher-selection-progress-icon">
+          <img src="../Layout-Img/teacher-selection-progress-apply.png" alt="">
+        </div>
+        <div class="teacher-selection-progress-divider"></div>
+        <div class="teacher-selection-progress-content">
+          <h4>申請條件需符合</h4>
+          <p>有家教、教師經驗或<br>
+            語言相關證照才能提出申請</p>
+        </div>
+      </div>
+      <div class="arrow-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+          <path
+            d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+        </svg>
+      </div>
+      <div class="teacher-selection-progress-item">
+        <div class="teacher-selection-progress-icon">
+          <img src="../Layout-Img/teacher-selection-progress-interview.png" alt="">
+        </div>
+        <div class="teacher-selection-progress-divider"></div>
+        <div class="teacher-selection-progress-content">
+          <h4>嚴格招募面試</h4>
+          <p>嚴格篩選出的優質教師<br>
+            才能在 AmazingTalker 上線授課</p>
+        </div>
+      </div>
+      <div class="arrow-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+          <path
+            d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+        </svg>
+      </div>
+      <div class="teacher-selection-progress-item">
+        <div class="teacher-selection-progress-icon">
+          <img src="../Layout-Img/teacher-selection-progress-training.png" alt="">
+        </div>
+        <div class="teacher-selection-progress-divider"></div>
+        <div class="teacher-selection-progress-content">
+          <h4>完善教師培訓</h4>
+          <p>教師上線都將接受教師培訓<br>
+            學生需求與教材製作力的提升</p>
+        </div>
+      </div>
+      <div class="arrow-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+          <path
+            d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+        </svg>
+      </div>
+      <div class="teacher-selection-progress-item">
+        <div class="teacher-selection-progress-icon">
+          <img src="../Layout-Img/teacher-selection-progress-ai_recommend.png" alt="">
+        </div>
+        <div class="teacher-selection-progress-divider"></div>
+        <div class="teacher-selection-progress-content">
+          <h4>AI 篩選排名</h4>
+          <p>AmazingTalker擁有AI排序法<br>
+            追蹤教師總評分 即時變動排序</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="guarentee">
+    <div class="guarentee-title">
+      <h3>100% 每堂課保障</h3>
+      <p>學生確認課程完成 才會撥款給教師<br>
+        若教師無法達到您的預期 可以直接轉移選購其他教師</p>
+    </div>
+    <div class="guarentee-container">
+      <div class="guarentee-item">
+
+      </div>
+      <div class="guarentee-item">
+
+      </div>
+      <div class="guarentee-item">
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
